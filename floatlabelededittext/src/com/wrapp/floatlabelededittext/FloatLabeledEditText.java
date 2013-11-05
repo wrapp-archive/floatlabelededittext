@@ -1,4 +1,4 @@
-package com.wrapp.android.views;
+package com.wrapp.floatlabelededittext;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -15,7 +15,6 @@ import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorListenerAdapter;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
-import com.wrapp.android.R;
 
 public class FloatLabeledEditText extends LinearLayout {
 

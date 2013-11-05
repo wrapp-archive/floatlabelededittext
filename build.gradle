@@ -9,8 +9,7 @@ buildscript {
 }
 
 allprojects {
-  group = 'com.wrapp.android'
-  version = '1.0.0'
+  group = 'com.wrapp.floatlabelededittext'
 
   repositories {
     mavenCentral()
