@@ -1,0 +1,22 @@
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+
+  dependencies {
+    classpath 'com.android.tools.build:gradle:0.6.+'
+  }
+}
+
+allprojects {
+  group = 'com.wrapp.android'
+  version = '1.0.0'
+
+  repositories {
+    mavenCentral()
+  }
+
+  tasks.withType(Compile) {
+    options.encoding = "UTF-8"
+  }
+}

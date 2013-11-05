@@ -1,0 +1,5 @@
+<resources>
+    <declare-styleable name="FloatLabeledEditText">
+        <attr name="floatingHint" format="string"/>
+    </declare-styleable>
+</resources>

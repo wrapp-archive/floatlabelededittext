@@ -1,0 +1,38 @@
+# Eclipse
+.project
+.classpath
+.settings
+.checkstyle
+
+# IntelliJ IDEA
+.idea
+*.iml
+*.ipr
+*.iws
+classes
+gen-external-apklibs
+
+# Gradle
+gradle/
+.gradle
+build
+gradlew
+gradlew.bat
+
+# Maven
+target
+release.properties
+pom.xml.*
+
+# Ant
+bin
+gen
+build.xml
+ant.properties
+local.properties
+proguard.cfg
+proguard-project.txt
+
+# Other
+.DS_Store
+tmp
