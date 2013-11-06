@@ -4,6 +4,7 @@ Float Labeled EditText
 Android view which uses a EditText and puts the hint on top of the EditText when it is populated with text. 
 
 iOS implementation by [@jverdi](http://www.twitter.com/jverdi): [JVFloatLabeledTextField](https://github.com/jverdi/JVFloatLabeledTextField) 
+
 Credits for the concept to Matt D. Smith ([@mds](http://www.twitter.com/mds)), and his original design:
 
 ![Matt D. Smith's Design](http://dribbble.s3.amazonaws.com/users/6410/screenshots/1254439/form-animation-_gif_.gif)
@@ -33,7 +34,12 @@ Add the library project (or just copy the files manually) and then insert the vi
 Developed By
 ============
 
-* Henrik Sandström @ [Wrapp](http://www.wrapp.com)
+* Henrik Sandström [@heinrisch](https://twitter.com/Heinrisch)
+
+Styled By
+=========
+
+* Marcus Gellemark [Dribbble](http://dribbble.com/Gellermark)
 
 License
 =======

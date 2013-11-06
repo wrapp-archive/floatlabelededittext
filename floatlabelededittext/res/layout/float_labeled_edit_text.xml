@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- ~ Copyright (c) 2012 Bohemian Wrappsody AB. -->
-
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
@@ -12,12 +10,12 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:text="Hint"
-        android:textStyle="bold"/>
+        android:textSize="9sp"/>
 
     <EditText
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_marginTop="-6dp"
+        android:layout_marginTop="-7dp"
         android:id="@+id/FloatLabeledEditTextEditText"/>
 
 </merge>

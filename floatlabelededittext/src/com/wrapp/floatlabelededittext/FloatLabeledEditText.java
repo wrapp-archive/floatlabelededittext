@@ -2,6 +2,7 @@ package com.wrapp.floatlabelededittext;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -59,6 +60,7 @@ public class FloatLabeledEditText extends LinearLayout {
 
     hintTextView.setVisibility(View.INVISIBLE);
     editText.addTextChangedListener(onTextChanged);
+    editText.setOnFocusChangeListener(onFocusChanged);
   }
 
   private TextWatcher onTextChanged = new TextWatcher() {
@@ -73,6 +75,17 @@ public class FloatLabeledEditText extends LinearLayout {
     @Override
     public void afterTextChanged(Editable editable) {
       setShowHint(editable.length() != 0);
+    }
+  };
+
+  private OnFocusChangeListener onFocusChanged = new OnFocusChangeListener() {
+    @Override
+    public void onFocusChange(View view, boolean gotFocus) {
+      if (gotFocus) {
+        ObjectAnimator.ofFloat(hintTextView, "alpha", 0.33f, 1f).start();
+      } else {
+        ObjectAnimator.ofFloat(hintTextView, "alpha", 1f, 0.33f).start();
+      }
     }
   };
 
