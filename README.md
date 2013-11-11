@@ -1,7 +1,7 @@
 Float Labeled EditText
 ==============
 
-Android view which uses a EditText and puts the hint on top of the EditText when it is populated with text. 
+Simple implementation of a Float Labeled EditText: An Android view which uses a EditText and puts the hint on top of the EditText when it is populated with text. 
 
 iOS implementation by [@jverdi](http://www.twitter.com/jverdi): [JVFloatLabeledTextField](https://github.com/jverdi/JVFloatLabeledTextField) 
 
@@ -40,6 +40,11 @@ Styled By
 =========
 
 * Marcus Gellemark [Dribbble](http://dribbble.com/Gellermark)
+
+Notes
+=====
+It would be much better to extend EditText and implement this functionallity...
+
 
 License
 =======
