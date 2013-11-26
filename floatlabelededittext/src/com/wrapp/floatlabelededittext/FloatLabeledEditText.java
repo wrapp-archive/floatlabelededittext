@@ -25,25 +25,29 @@ public class FloatLabeledEditText extends LinearLayout {
   private EditText editText;
 
   public FloatLabeledEditText(Context context) {
-    this(context, null);
+    super(context);
     initialize();
   }
 
   public FloatLabeledEditText(Context context, AttributeSet attrs) {
-    this(context, attrs, 0);
+    super(context, attrs);
+    setAttributes(attrs);
+    initialize();
   }
 
   public FloatLabeledEditText(Context context, AttributeSet attrs, int defStyle) {
     super(context, attrs, defStyle);
-
+    setAttributes(attrs);
+    initialize();
+  }
+  
+  private void setAttributes(AttributeSet attrs) {
     TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FloatLabeledEditText);
     try {
       hint = a.getString(R.styleable.FloatLabeledEditText_floatingHint);
     } finally {
       a.recycle();
     }
-
-    initialize();
   }
 
   private void initialize() {
