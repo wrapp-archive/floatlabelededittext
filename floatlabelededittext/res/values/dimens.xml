@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="flet_hint_text_size">11sp</dimen>
+    <dimen name="flet_hint_text_padding_horizontal">13dp</dimen>
+</resources>
