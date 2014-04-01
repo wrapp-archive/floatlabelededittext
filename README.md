@@ -35,6 +35,7 @@ Developed By
 ============
 
 * Henrik Sandström [@heinrisch](https://twitter.com/Heinrisch)
+* Aaron Rietschlin [@AaronRietschlin](https://twitter.com/AaronRietschlin)
 
 Styled By
 =========
