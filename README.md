@@ -7,7 +7,7 @@ iOS implementation by [@jverdi](http://www.twitter.com/jverdi): [JVFloatLabeledT
 
 Credits for the concept to Matt D. Smith ([@mds](http://www.twitter.com/mds)), and his original design:
 
-![Matt D. Smith's Design](http://dribbble.s3.amazonaws.com/users/6410/screenshots/1254439/form-animation-_gif_.gif)
+![Android Version](http://i.imgur.com/ucRd1jm.gif)
 
 http://dribbble.com/shots/1254439--GIF-Mobile-Form-Interaction?list=users
 
