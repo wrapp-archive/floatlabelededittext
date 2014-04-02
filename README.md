@@ -5,7 +5,7 @@ Simple implementation of a Float Labeled EditText: An Android view which uses a 
 
 iOS implementation by [@jverdi](http://www.twitter.com/jverdi): [JVFloatLabeledTextField](https://github.com/jverdi/JVFloatLabeledTextField) 
 
-Credits for the concept to Matt D. Smith ([@mds](http://www.twitter.com/mds)), and his original design:
+Credits for the concept to Matt D. Smith ([@mds](http://www.twitter.com/mds)).
 
 ![Android Version](http://i.imgur.com/ucRd1jm.gif)
 
