@@ -28,7 +28,7 @@ Add the library project (or just copy the files manually) and then insert the vi
     <com.wrapp.floatlabelededittext.FloatLabeledEditText
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        float:floatingHint="Test"/>
+        float:fletFloatingHint="Test"/>
 </LinearLayout>
 ```
 Developed By
