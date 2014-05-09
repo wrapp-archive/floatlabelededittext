@@ -6,6 +6,9 @@
         <attr name="fletSingleLine" format="boolean" />
         <attr name="fletHintTextColor" format="reference|color" />
         <attr name="fletTextColor" format="reference|color" />
+        <attr name="fletEditTextLine" format="integer"></attr>
+        <attr name="fletEditTextMinLine" format="integer"></attr>
+        <attr name="fletEditTextMaxLine" format="integer"></attr>
         <!-- Supply a value for
              {@link android.view.inputmethod.EditorInfo#actionLabel EditorInfo.actionLabel}
              used when an input method is connected to the text view. -->
@@ -275,6 +278,7 @@
                  {@link android.view.inputmethod.EditorInfo#IME_FLAG_FORCE_ASCII}. -->
             <flag name="flagForceAscii" value="0x80000000" />
         </attr>
+
     </declare-styleable>
 
 </resources>

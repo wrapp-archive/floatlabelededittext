@@ -29,7 +29,7 @@ import com.nineoldandroids.animation.ObjectAnimator;
 
 public class FloatLabeledEditText extends LinearLayout {
 
-    private String hint;
+	private String hint;
     private int inputType;
     private int imeOptions;
     private int imeActionId;
@@ -37,6 +37,9 @@ public class FloatLabeledEditText extends LinearLayout {
     private boolean singleLine;
     private ColorStateList hintColor;
     private ColorStateList textColor;
+    private int lines;
+    private int minLines;
+    private int maxLines;
 
     private TextView hintTextView;
     private EditText editText;
@@ -76,6 +79,10 @@ public class FloatLabeledEditText extends LinearLayout {
             singleLine = a.getBoolean(R.styleable.FloatLabeledEditText_fletSingleLine, false);
             hintColor = a.getColorStateList(R.styleable.FloatLabeledEditText_fletHintTextColor);
             textColor = a.getColorStateList(R.styleable.FloatLabeledEditText_fletTextColor);
+            lines = a.getInteger(R.styleable.FloatLabeledEditText_fletEditTextLine, EditorInfo.TYPE_NULL);
+            minLines = a.getInteger(R.styleable.FloatLabeledEditText_fletEditTextMinLine, EditorInfo.TYPE_NULL);
+            maxLines = a.getInteger(R.styleable.FloatLabeledEditText_fletEditTextMaxLine, EditorInfo.TYPE_NULL);
+            
         } finally {
             a.recycle();
         }
@@ -106,10 +113,23 @@ public class FloatLabeledEditText extends LinearLayout {
         editText.setSingleLine(singleLine);
         hintTextView.setTextColor(hintColor != null ? hintColor : ColorStateList.valueOf(Color.BLACK));
         editText.setTextColor(textColor != null ? textColor : ColorStateList.valueOf(Color.BLACK));
-
+        
+        if(!singleLine && lines != EditorInfo.TYPE_NULL){
+        	editText.setLines(lines);
+        }
+        
+        if(!singleLine && minLines != EditorInfo.TYPE_NULL){
+        	editText.setMinLines(minLines);
+        }
+        
+        if(!singleLine && maxLines != EditorInfo.TYPE_NULL){
+        	editText.setMaxLines(maxLines);
+        }
+        
         hintTextView.setVisibility(View.INVISIBLE);
         editText.addTextChangedListener(onTextChanged);
         editText.setOnFocusChangeListener(onFocusChanged);
+        
     }
 
     private TextWatcher onTextChanged = new TextWatcher() {
@@ -354,6 +374,9 @@ public class FloatLabeledEditText extends LinearLayout {
         ss.text = editText.getText().toString();
         ss.hintColor = hintColor;
         ss.textColor = textColor;
+        ss.lines = lines;
+        ss.minLines = minLines;
+        ss.maxLines = maxLines;
         return ss;
     }
 
@@ -388,6 +411,9 @@ public class FloatLabeledEditText extends LinearLayout {
         boolean singleLine;
         ColorStateList hintColor;
         ColorStateList textColor;
+        int lines;
+        int minLines;
+        int maxLines;
 
         FloatEditTextSavedState(Parcelable superState) {
             super(superState);
@@ -404,6 +430,9 @@ public class FloatLabeledEditText extends LinearLayout {
             singleLine = in.readInt() == 1;
             hintColor = in.readParcelable(ColorStateList.class.getClassLoader());
             textColor = in.readParcelable(ColorStateList.class.getClassLoader());
+            lines = in.readInt();
+            minLines = in.readInt();
+            maxLines = in.readInt();
         }
 
         @Override
@@ -418,6 +447,9 @@ public class FloatLabeledEditText extends LinearLayout {
             out.writeInt(singleLine ? 1 : 0);
             out.writeParcelable(hintColor, flags);
             out.writeParcelable(textColor, flags);
+            out.writeInt(lines);
+            out.writeInt(minLines);
+            out.writeInt(maxLines);
         }
 
         //required field that makes Parcelables from a Parcel
