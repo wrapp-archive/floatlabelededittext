@@ -35,6 +35,7 @@ public class FloatLabeledEditText extends LinearLayout {
     private int imeActionId;
     private String imeActionLabel;
     private boolean singleLine;
+    private int lines;
     private ColorStateList hintColor;
     private ColorStateList textColor;
 
@@ -74,6 +75,7 @@ public class FloatLabeledEditText extends LinearLayout {
             imeActionId = a.getInt(R.styleable.FloatLabeledEditText_fletImeActionId, -1);
             imeActionLabel = a.getString(R.styleable.FloatLabeledEditText_fletImeActionLabel);
             singleLine = a.getBoolean(R.styleable.FloatLabeledEditText_fletSingleLine, false);
+            lines = a.getInt(R.styleable.FloatLabeledEditText_fletLines, 1);
             hintColor = a.getColorStateList(R.styleable.FloatLabeledEditText_fletHintTextColor);
             textColor = a.getColorStateList(R.styleable.FloatLabeledEditText_fletTextColor);
         } finally {
@@ -104,6 +106,7 @@ public class FloatLabeledEditText extends LinearLayout {
             editText.setImeActionLabel(imeActionLabel, imeActionId);
         }
         editText.setSingleLine(singleLine);
+        editText.setLines(lines);
         hintTextView.setTextColor(hintColor != null ? hintColor : ColorStateList.valueOf(Color.BLACK));
         editText.setTextColor(textColor != null ? textColor : ColorStateList.valueOf(Color.BLACK));
 
@@ -351,6 +354,7 @@ public class FloatLabeledEditText extends LinearLayout {
         ss.imeActionId = imeActionId;
         ss.imeActionLabel = imeActionLabel;
         ss.singleLine = singleLine;
+        ss.lines = lines;
         ss.text = editText.getText().toString();
         ss.hintColor = hintColor;
         ss.textColor = textColor;
@@ -386,6 +390,7 @@ public class FloatLabeledEditText extends LinearLayout {
         int imeActionId;
         String imeActionLabel;
         boolean singleLine;
+        int lines;
         ColorStateList hintColor;
         ColorStateList textColor;
 
@@ -402,6 +407,7 @@ public class FloatLabeledEditText extends LinearLayout {
             imeActionId = in.readInt();
             imeActionLabel = in.readString();
             singleLine = in.readInt() == 1;
+            lines = in.readInt();
             hintColor = in.readParcelable(ColorStateList.class.getClassLoader());
             textColor = in.readParcelable(ColorStateList.class.getClassLoader());
         }
@@ -416,6 +422,7 @@ public class FloatLabeledEditText extends LinearLayout {
             out.writeInt(imeActionId);
             out.writeString(imeActionLabel);
             out.writeInt(singleLine ? 1 : 0);
+            out.writeInt(lines);
             out.writeParcelable(hintColor, flags);
             out.writeParcelable(textColor, flags);
         }

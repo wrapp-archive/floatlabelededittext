@@ -2,6 +2,7 @@
 <resources>
 
     <declare-styleable name="FloatLabeledEditText">
+        <attr name="fletLines" format="integer" />
         <attr name="fletFloatingHint" format="string" />
         <attr name="fletSingleLine" format="boolean" />
         <attr name="fletHintTextColor" format="reference|color" />
