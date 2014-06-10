@@ -13,6 +13,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
@@ -96,16 +97,19 @@ public class FloatLabeledEditText extends LinearLayout {
             setHint(hint);
         }
 
-        if (inputType != EditorInfo.TYPE_NULL) {
-            editText.setInputType(inputType);
-        }
         editText.setImeOptions(imeOptions);
+
         if (imeActionId > -1 && !TextUtils.isEmpty(imeActionLabel)) {
             editText.setImeActionLabel(imeActionLabel, imeActionId);
         }
+
         editText.setSingleLine(singleLine);
         hintTextView.setTextColor(hintColor != null ? hintColor : ColorStateList.valueOf(Color.BLACK));
         editText.setTextColor(textColor != null ? textColor : ColorStateList.valueOf(Color.BLACK));
+
+        if (inputType != EditorInfo.TYPE_NULL) {
+            editText.setInputType(inputType);
+        }
 
         hintTextView.setVisibility(View.INVISIBLE);
         editText.addTextChangedListener(onTextChanged);

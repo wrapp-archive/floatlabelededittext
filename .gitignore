@@ -18,6 +18,8 @@ gradle/
 build
 gradlew
 gradlew.bat
+# Gradle
+gradle.properties
 
 # Maven
 target

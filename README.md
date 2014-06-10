@@ -42,6 +42,11 @@ Styled By
 
 * Marcus Gellemark [Dribbble](http://dribbble.com/Gellermark)
 
+Additional Credit
+=================
+
+* Quentin DOMMERC [dommerq](https://github.com/dommerq)
+
 Notes
 =====
 It would be much better to extend EditText and implement this functionallity...

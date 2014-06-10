@@ -1,1 +1,1 @@
-include 'floatlabelededittext' 
+include ':library', ':example'
