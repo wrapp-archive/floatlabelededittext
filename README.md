@@ -15,7 +15,20 @@ http://dribbble.com/shots/1254439--GIF-Mobile-Form-Interaction?list=users
 Usage
 =====
 
-Add the library project (or just copy the files manually) and then insert the view in XML:
+Add the library project or grab to build.gradle:
+```groovy
+compile 'com.wrapp.floatlabelededittext:library:0.0.3'
+```
+or plain maven:
+```maven
+<dependency>
+  <groupId>com.wrapp.floatlabelededittext</groupId>
+  <artifactId>library</artifactId>
+  <version>0.0.3</version>
+  <type>aar</type>
+</dependency>
+```
+and then insert the view in XML:
 
 ```xml
 <LinearLayout
