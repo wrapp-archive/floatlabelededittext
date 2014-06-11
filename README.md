@@ -26,9 +26,15 @@ Add the library project (or just copy the files manually) and then insert the vi
     android:orientation="vertical">
 
     <com.wrapp.floatlabelededittext.FloatLabeledEditText
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        float:fletFloatingHint="Test"/>
+        android:layout_height="wrap_content"
+        float:fletFloatingHint="Username"/>
+
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        float:fletFloatingHint="Password"
+        float:fletInputType="textPassword"/>
 </LinearLayout>
 ```
 Developed By
