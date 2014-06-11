@@ -27,6 +27,7 @@ import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorListenerAdapter;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
+import com.nineoldandroids.view.animation.AnimatorProxy;
 
 public class FloatLabeledEditText extends LinearLayout {
 
@@ -112,6 +113,7 @@ public class FloatLabeledEditText extends LinearLayout {
         }
 
         hintTextView.setVisibility(View.INVISIBLE);
+        AnimatorProxy.wrap(hintTextView).setAlpha(0); //Need this for compat reasons
         editText.addTextChangedListener(onTextChanged);
         editText.setOnFocusChangeListener(onFocusChanged);
     }
@@ -134,9 +136,10 @@ public class FloatLabeledEditText extends LinearLayout {
     private OnFocusChangeListener onFocusChanged = new OnFocusChangeListener() {
         @Override
         public void onFocusChange(View view, boolean gotFocus) {
-            if (gotFocus) {
+            if (gotFocus && hintTextView.getVisibility() == VISIBLE) {
                 ObjectAnimator.ofFloat(hintTextView, "alpha", 0.33f, 1f).start();
-            } else {
+            } else if (hintTextView.getVisibility() == VISIBLE){
+                AnimatorProxy.wrap(hintTextView).setAlpha(1f);  //Need this for compat reasons
                 ObjectAnimator.ofFloat(hintTextView, "alpha", 1f, 0.33f).start();
             }
         }

@@ -2,5 +2,5 @@
     <dimen name="flet_hint_text_size">11sp</dimen>
     <dimen name="flet_hint_text_padding_horizontal">13dp</dimen>
 
-    <dimen name="flet_hint_margin">0dp</dimen>
+    <dimen name="flet_hint_margin">-7dp</dimen>
 </resources>
