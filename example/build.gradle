@@ -21,6 +21,6 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:19.+'
-    //compile 'com.wrapp.floatlabelededittext:library:+'
+    //compile 'com.wrapp.floatlabelededittext:library:0.0.3'
     compile project(":library")
 }
