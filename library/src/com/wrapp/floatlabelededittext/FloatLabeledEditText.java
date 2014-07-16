@@ -31,7 +31,7 @@ import com.nineoldandroids.view.animation.AnimatorProxy;
 public class FloatLabeledEditText extends LinearLayout {
 
 	public interface FloatLabeledEditTextClickListener {
-		void onClick(View v, boolean fletClicked);
+		void onClick(View v);
 	}
 	
 	public interface FloatLabeledEditTextFocusListener {
@@ -51,8 +51,8 @@ public class FloatLabeledEditText extends LinearLayout {
     private EditText editText;
 
     private Context mContext;
-    private FloatLabeledEditTextClickListener _clickListener;
-    private FloatLabeledEditTextFocusListener _focusListener;
+    private FloatLabeledEditTextClickListener mClickListener;
+    private FloatLabeledEditTextFocusListener mFocusListener;
 
     public FloatLabeledEditText(Context context) {
         super(context);
@@ -129,7 +129,7 @@ public class FloatLabeledEditText extends LinearLayout {
         editText.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if (_clickListener != null) _clickListener.onClick(FloatLabeledEditText.this, true);
+				if (mClickListener != null) mClickListener.onClick(FloatLabeledEditText.this);
 			}
 		});
     }
@@ -152,7 +152,7 @@ public class FloatLabeledEditText extends LinearLayout {
     private OnFocusChangeListener onFocusChanged = new OnFocusChangeListener() {
         @Override
         public void onFocusChange(View view, boolean gotFocus) {
-        	if (_focusListener != null) _focusListener.onFocusChange(FloatLabeledEditText.this, gotFocus);
+        	if (mFocusListener != null) mFocusListener.onFocusChange(FloatLabeledEditText.this, gotFocus);
             if (gotFocus && hintTextView.getVisibility() == VISIBLE) {
                 ObjectAnimator.ofFloat(hintTextView, "alpha", 0.33f, 1f).start();
             } else if (hintTextView.getVisibility() == VISIBLE){
@@ -163,11 +163,11 @@ public class FloatLabeledEditText extends LinearLayout {
     };
 
     public void setOnClickListener(FloatLabeledEditTextClickListener listener) {
-    	_clickListener = listener;
+    	mClickListener = listener;
     }
     
     public void setOnFocusChangeListener(FloatLabeledEditTextFocusListener listener) {
-    	_focusListener = listener;
+    	mFocusListener = listener;
     }
     
     private void setShowHint(final boolean show) {
