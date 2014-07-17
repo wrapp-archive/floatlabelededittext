@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Parcel;
@@ -13,7 +14,6 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
@@ -314,6 +314,10 @@ public class FloatLabeledEditText extends LinearLayout {
         hintTextView.setTextColor(color);
     }
 
+    public void setHintTypeFace(Typeface typeface){
+        hintTextView.setTypeface(typeface);
+    }
+    
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     @Override
     public void onInitializeAccessibilityEvent(AccessibilityEvent event) {

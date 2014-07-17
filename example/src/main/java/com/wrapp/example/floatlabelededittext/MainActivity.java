@@ -1,17 +1,26 @@
 package com.wrapp.example.floatlabelededittext;
 
-import android.support.v7.app.ActionBarActivity;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.wrapp.floatlabelededittext.FloatLabeledEditText;
+
 
 public class MainActivity extends ActionBarActivity {
+    FloatLabeledEditText typefacedEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        typefacedEditText = (FloatLabeledEditText) findViewById(R.id.typefacedEditText);
+
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "RobotoCondensed-LightItalic.ttf");
+        typefacedEditText.setHintTypeFace(typeface);
     }
 
 
