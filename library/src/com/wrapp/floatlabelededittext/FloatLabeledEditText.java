@@ -41,6 +41,7 @@ public class FloatLabeledEditText extends LinearLayout {
     private ColorStateList hintColor;
     private ColorStateList floatHintColor;
     private ColorStateList textColor;
+    private Drawable background;
 
     private TextView hintTextView;
     private EditText editText;
@@ -82,18 +83,21 @@ public class FloatLabeledEditText extends LinearLayout {
             hintColor = a.getColorStateList(R.styleable.FloatLabeledEditText_fletHintTextColor);
             floatHintColor = a.getColorStateList(R.styleable.FloatLabeledEditText_fletFloatingHintTextColor);
             textColor = a.getColorStateList(R.styleable.FloatLabeledEditText_fletTextColor);
-
-            if (floatHintColor == null) {
-                floatHintColor = hintColor;
-            }
-
-            if (floatHint == null) {
-                floatHint = hint;
-            } else if (hint == null) {
-                hint = floatHint;
-            }
+            background = a.getDrawable(R.styleable.FloatLabeledEditText_fletBackground);
         } finally {
             a.recycle();
+        }
+
+        if (floatHintColor == null) {
+            floatHintColor = hintColor;
+        } else if (hintColor == null) {
+            hintColor = floatHintColor;
+        }
+
+        if (floatHint == null) {
+            floatHint = hint;
+        } else if (hint == null) {
+            hint = floatHint;
         }
     }
 
@@ -122,6 +126,14 @@ public class FloatLabeledEditText extends LinearLayout {
         hintTextView.setTextColor(floatHintColor != null ? floatHintColor : ColorStateList.valueOf(Color.BLACK));
         editText.setHintTextColor(hintColor != null ? hintColor : ColorStateList.valueOf(Color.BLACK));
         editText.setTextColor(textColor != null ? textColor : ColorStateList.valueOf(Color.BLACK));
+        if (background != null) {
+            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                editText.setBackground(background);
+            } else {
+                //noinspection deprecation
+                editText.setBackgroundDrawable(background);
+            }
+        }
 
         if (inputType != EditorInfo.TYPE_NULL) {
             editText.setInputType(inputType);

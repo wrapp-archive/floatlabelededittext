@@ -35,4 +35,10 @@
         float:fletHint="Hint Color is blue!"
         float:fletFloatingHint="Float Hint Color is red!"/>
 
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        float:fletBackground="@drawable/float_labeled_edit_text_selector"
+        float:fletHint="Custom background"/>
+
 </LinearLayout>
