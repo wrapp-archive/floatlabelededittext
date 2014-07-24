@@ -3,8 +3,10 @@
 
     <declare-styleable name="FloatLabeledEditText">
         <attr name="fletFloatingHint" format="string" />
+        <attr name="fletHint" format="string" />
         <attr name="fletSingleLine" format="boolean" />
         <attr name="fletHintTextColor" format="reference|color" />
+        <attr name="fletFloatingHintTextColor" format="reference|color" />
         <attr name="fletTextColor" format="reference|color" />
         <!-- Supply a value for
              {@link android.view.inputmethod.EditorInfo#actionLabel EditorInfo.actionLabel}
