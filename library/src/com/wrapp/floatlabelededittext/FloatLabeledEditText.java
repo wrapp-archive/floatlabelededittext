@@ -93,6 +93,7 @@ public class FloatLabeledEditText extends LinearLayout {
 
         hintTextView = (TextView) view.findViewById(R.id.FloatLabeledEditTextHint);
         editText = (EditText) view.findViewById(R.id.FloatLabeledEditTextEditText);
+        editText.setId(Utils.generateId());
 
         if (hint != null) {
             setHint(hint);
@@ -155,7 +156,12 @@ public class FloatLabeledEditText extends LinearLayout {
         } else if ((hintTextView.getVisibility() != VISIBLE) && show) {
             animation = new AnimatorSet();
             ObjectAnimator move = ObjectAnimator.ofFloat(hintTextView, "translationY", hintTextView.getHeight() / 8, 0);
-            ObjectAnimator fade = ObjectAnimator.ofFloat(hintTextView, "alpha", 0, 1);
+            ObjectAnimator fade;
+            if (editText.isFocused()) {
+            	fade = ObjectAnimator.ofFloat(hintTextView, "alpha", 0, 1);
+            } else {
+            	fade = ObjectAnimator.ofFloat(hintTextView, "alpha", 0, 0.33f);
+            }
             animation.playTogether(move, fade);
         }
 
