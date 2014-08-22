@@ -1,5 +1,6 @@
 package com.wrapp.floatlabelededittext;
 
+import com.wrapp.floatlabelededittext.Utils;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.ColorStateList;
