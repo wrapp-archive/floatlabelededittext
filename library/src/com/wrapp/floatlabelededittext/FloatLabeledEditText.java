@@ -156,6 +156,7 @@ public class FloatLabeledEditText extends LinearLayout {
             animation = new AnimatorSet();
             ObjectAnimator move = ObjectAnimator.ofFloat(hintTextView, "translationY", hintTextView.getHeight() / 8, 0);
             ObjectAnimator fade = ObjectAnimator.ofFloat(hintTextView, "alpha", 0, 1);
+            AnimatorProxy.wrap(hintTextView).setAlpha(1f);  //Need this for compat reasons
             animation.playTogether(move, fade);
         }
 
