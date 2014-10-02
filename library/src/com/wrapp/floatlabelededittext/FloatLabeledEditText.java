@@ -14,7 +14,6 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
@@ -32,6 +31,14 @@ import com.nineoldandroids.view.animation.AnimatorProxy;
 
 public class FloatLabeledEditText extends LinearLayout {
 
+	public interface FloatLabeledEditTextClickListener {
+		void onClick(View v);
+	}
+	
+	public interface FloatLabeledEditTextFocusListener {
+		void onFocusChange(View v, boolean hasFocus);
+	}
+	
     private String hint;
     private int inputType;
     private int imeOptions;
@@ -45,6 +52,8 @@ public class FloatLabeledEditText extends LinearLayout {
     private EditText editText;
 
     private Context mContext;
+    private FloatLabeledEditTextClickListener mClickListener;
+    private FloatLabeledEditTextFocusListener mFocusListener;
 
     public FloatLabeledEditText(Context context) {
         super(context);
@@ -118,6 +127,13 @@ public class FloatLabeledEditText extends LinearLayout {
         AnimatorProxy.wrap(hintTextView).setAlpha(0); //Need this for compat reasons
         editText.addTextChangedListener(onTextChanged);
         editText.setOnFocusChangeListener(onFocusChanged);
+        
+        editText.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (mClickListener != null) mClickListener.onClick(FloatLabeledEditText.this);
+			}
+		});
     }
 
     private TextWatcher onTextChanged = new TextWatcher() {
@@ -138,6 +154,7 @@ public class FloatLabeledEditText extends LinearLayout {
     private OnFocusChangeListener onFocusChanged = new OnFocusChangeListener() {
         @Override
         public void onFocusChange(View view, boolean gotFocus) {
+        	if (mFocusListener != null) mFocusListener.onFocusChange(FloatLabeledEditText.this, gotFocus);
             if (gotFocus && hintTextView.getVisibility() == VISIBLE) {
                 ObjectAnimator.ofFloat(hintTextView, "alpha", 0.33f, 1f).start();
             } else if (hintTextView.getVisibility() == VISIBLE){
@@ -147,6 +164,14 @@ public class FloatLabeledEditText extends LinearLayout {
         }
     };
 
+    public void setOnClickListener(FloatLabeledEditTextClickListener listener) {
+    	mClickListener = listener;
+    }
+    
+    public void setOnFocusChangeListener(FloatLabeledEditTextFocusListener listener) {
+    	mFocusListener = listener;
+    }
+    
     private void setShowHint(final boolean show) {
         AnimatorSet animation = null;
         if ((hintTextView.getVisibility() == VISIBLE) && !show) {
