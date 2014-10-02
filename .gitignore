@@ -13,11 +13,8 @@ classes
 gen-external-apklibs
 
 # Gradle
-gradle/
 .gradle
 build
-gradlew
-gradlew.bat
 # Gradle
 gradle.properties
 
