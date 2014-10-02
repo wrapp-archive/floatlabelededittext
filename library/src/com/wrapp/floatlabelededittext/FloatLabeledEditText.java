@@ -33,13 +33,16 @@ import com.nineoldandroids.view.animation.AnimatorProxy;
 public class FloatLabeledEditText extends LinearLayout {
 
     private String hint;
+    private String floatHint;
     private int inputType;
     private int imeOptions;
     private int imeActionId;
     private String imeActionLabel;
     private boolean singleLine;
     private ColorStateList hintColor;
+    private ColorStateList floatHintColor;
     private ColorStateList textColor;
+    private Drawable background;
 
     private TextView hintTextView;
     private EditText editText;
@@ -71,16 +74,31 @@ public class FloatLabeledEditText extends LinearLayout {
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FloatLabeledEditText);
         inputType = EditorInfo.TYPE_NULL;
         try {
-            hint = a.getString(R.styleable.FloatLabeledEditText_fletFloatingHint);
+            hint = a.getString(R.styleable.FloatLabeledEditText_fletHint);
+            floatHint = a.getString(R.styleable.FloatLabeledEditText_fletFloatingHint);
             inputType = a.getInt(R.styleable.FloatLabeledEditText_fletInputType, EditorInfo.TYPE_NULL);
             imeOptions = a.getInt(R.styleable.FloatLabeledEditText_fletImeOptions, EditorInfo.IME_ACTION_DONE);
             imeActionId = a.getInt(R.styleable.FloatLabeledEditText_fletImeActionId, -1);
             imeActionLabel = a.getString(R.styleable.FloatLabeledEditText_fletImeActionLabel);
             singleLine = a.getBoolean(R.styleable.FloatLabeledEditText_fletSingleLine, false);
             hintColor = a.getColorStateList(R.styleable.FloatLabeledEditText_fletHintTextColor);
+            floatHintColor = a.getColorStateList(R.styleable.FloatLabeledEditText_fletFloatingHintTextColor);
             textColor = a.getColorStateList(R.styleable.FloatLabeledEditText_fletTextColor);
+            background = a.getDrawable(R.styleable.FloatLabeledEditText_fletBackground);
         } finally {
             a.recycle();
+        }
+
+        if (floatHintColor == null) {
+            floatHintColor = hintColor;
+        } else if (hintColor == null) {
+            hintColor = floatHintColor;
+        }
+
+        if (floatHint == null) {
+            floatHint = hint;
+        } else if (hint == null) {
+            hint = floatHint;
         }
     }
 
@@ -97,7 +115,7 @@ public class FloatLabeledEditText extends LinearLayout {
         editText.setId(Utils.generateId());
 
         if (hint != null) {
-            setHint(hint);
+            setHint(hint, floatHint);
         }
 
         editText.setImeOptions(imeOptions);
@@ -107,8 +125,17 @@ public class FloatLabeledEditText extends LinearLayout {
         }
 
         editText.setSingleLine(singleLine);
-        hintTextView.setTextColor(hintColor != null ? hintColor : ColorStateList.valueOf(Color.BLACK));
+        hintTextView.setTextColor(floatHintColor != null ? floatHintColor : ColorStateList.valueOf(Color.BLACK));
+        editText.setHintTextColor(hintColor != null ? hintColor : ColorStateList.valueOf(Color.BLACK));
         editText.setTextColor(textColor != null ? textColor : ColorStateList.valueOf(Color.BLACK));
+        if (background != null) {
+            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                editText.setBackground(background);
+            } else {
+                //noinspection deprecation
+                editText.setBackgroundDrawable(background);
+            }
+        }
 
         if (inputType != EditorInfo.TYPE_NULL) {
             editText.setInputType(inputType);
@@ -188,10 +215,12 @@ public class FloatLabeledEditText extends LinearLayout {
         return editText;
     }
 
-    public void setHint(String hint) {
+    public void setHint(String hint, String floatHint) {
         this.hint = hint;
         editText.setHint(hint);
-        hintTextView.setText(hint);
+
+        this.floatHint = floatHint;
+        hintTextView.setText(floatHint);
     }
 
     public String getHint() {
@@ -367,6 +396,7 @@ public class FloatLabeledEditText extends LinearLayout {
         ss.singleLine = singleLine;
         ss.text = editText.getText().toString();
         ss.hintColor = hintColor;
+        ss.floatHintColor = floatHintColor;
         ss.textColor = textColor;
         return ss;
     }
@@ -401,6 +431,7 @@ public class FloatLabeledEditText extends LinearLayout {
         String imeActionLabel;
         boolean singleLine;
         ColorStateList hintColor;
+        ColorStateList floatHintColor;
         ColorStateList textColor;
 
         FloatEditTextSavedState(Parcelable superState) {
@@ -417,6 +448,7 @@ public class FloatLabeledEditText extends LinearLayout {
             imeActionLabel = in.readString();
             singleLine = in.readInt() == 1;
             hintColor = in.readParcelable(ColorStateList.class.getClassLoader());
+            floatHintColor = in.readParcelable(ColorStateList.class.getClassLoader());
             textColor = in.readParcelable(ColorStateList.class.getClassLoader());
         }
 
@@ -431,6 +463,7 @@ public class FloatLabeledEditText extends LinearLayout {
             out.writeString(imeActionLabel);
             out.writeInt(singleLine ? 1 : 0);
             out.writeParcelable(hintColor, flags);
+            out.writeParcelable(floatHintColor, flags);
             out.writeParcelable(textColor, flags);
         }
 
