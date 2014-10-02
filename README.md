@@ -17,14 +17,14 @@ Usage
 
 Add the library project or grab to build.gradle:
 ```groovy
-compile 'com.wrapp.floatlabelededittext:library:0.0.3'
+compile 'com.wrapp.floatlabelededittext:library:0.0.4'
 ```
 or plain maven:
 ```maven
 <dependency>
   <groupId>com.wrapp.floatlabelededittext</groupId>
   <artifactId>library</artifactId>
-  <version>0.0.3</version>
+  <version>0.0.4</version>
   <type>aar</type>
 </dependency>
 ```
