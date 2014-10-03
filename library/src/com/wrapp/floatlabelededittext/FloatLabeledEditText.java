@@ -321,6 +321,10 @@ public class FloatLabeledEditText extends LinearLayout {
         hintTextView.setTextColor(color);
     }
 
+    public void setFilters(InputFilter[] filters) {
+        editText.setFilters(filters);
+    }
+    
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     @Override
     public void onInitializeAccessibilityEvent(AccessibilityEvent event) {
