@@ -40,6 +40,9 @@ public class FloatLabeledEditText extends LinearLayout {
     private boolean singleLine;
     private ColorStateList hintColor;
     private ColorStateList textColor;
+    private int ems = -1;
+    private int minEms = -1;
+    private int maxEms = -1;
 
     private TextView hintTextView;
     private EditText editText;
@@ -79,6 +82,9 @@ public class FloatLabeledEditText extends LinearLayout {
             singleLine = a.getBoolean(R.styleable.FloatLabeledEditText_fletSingleLine, false);
             hintColor = a.getColorStateList(R.styleable.FloatLabeledEditText_fletHintTextColor);
             textColor = a.getColorStateList(R.styleable.FloatLabeledEditText_fletTextColor);
+            ems = a.getInteger(R.styleable.FloatLabeledEditText_fletEms, -1);
+            minEms = a.getInteger(R.styleable.FloatLabeledEditText_fletMinEms, -1);
+            maxEms = a.getInteger(R.styleable.FloatLabeledEditText_fletMaxEms, -1);
         } finally {
             a.recycle();
         }
@@ -109,6 +115,16 @@ public class FloatLabeledEditText extends LinearLayout {
         editText.setSingleLine(singleLine);
         hintTextView.setTextColor(hintColor != null ? hintColor : ColorStateList.valueOf(Color.BLACK));
         editText.setTextColor(textColor != null ? textColor : ColorStateList.valueOf(Color.BLACK));
+
+        if (ems != -1) {
+            editText.setEms(ems);
+        }
+        if (minEms != -1) {
+            editText.setMinEms(minEms);
+        }
+        if (maxEms != -1) {
+            editText.setMaxEms(maxEms);
+        }
 
         if (inputType != EditorInfo.TYPE_NULL) {
             editText.setInputType(inputType);
