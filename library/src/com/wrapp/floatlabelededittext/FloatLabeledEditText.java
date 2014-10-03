@@ -30,9 +30,12 @@ import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
 import com.nineoldandroids.view.animation.AnimatorProxy;
 
+import com.wrapp.floatlabelededittext.R;
+
 public class FloatLabeledEditText extends LinearLayout {
 
     private String hint;
+    private String floatingHint;
     private int inputType;
     private int imeOptions;
     private int imeActionId;
@@ -71,7 +74,11 @@ public class FloatLabeledEditText extends LinearLayout {
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FloatLabeledEditText);
         inputType = EditorInfo.TYPE_NULL;
         try {
-            hint = a.getString(R.styleable.FloatLabeledEditText_fletFloatingHint);
+            floatingHint = a.getString(R.styleable.FloatLabeledEditText_fletFloatingHint);
+            hint = a.getString(R.styleable.FloatLabeledEditText_fletHint);
+            if (hint == null) {
+                hint = floatingHint;
+            }
             inputType = a.getInt(R.styleable.FloatLabeledEditText_fletInputType, EditorInfo.TYPE_NULL);
             imeOptions = a.getInt(R.styleable.FloatLabeledEditText_fletImeOptions, EditorInfo.IME_ACTION_DONE);
             imeActionId = a.getInt(R.styleable.FloatLabeledEditText_fletImeActionId, -1);
@@ -96,8 +103,11 @@ public class FloatLabeledEditText extends LinearLayout {
         editText = (EditText) view.findViewById(R.id.FloatLabeledEditTextEditText);
         editText.setId(Utils.generateId());
 
+        if (floatingHint != null) {
+            hintTextView.setText(floatingHint);
+        }
         if (hint != null) {
-            setHint(hint);
+            editText.setHint(hint);
         }
 
         editText.setImeOptions(imeOptions);
@@ -188,10 +198,23 @@ public class FloatLabeledEditText extends LinearLayout {
         return editText;
     }
 
-    public void setHint(String hint) {
-        this.hint = hint;
-        editText.setHint(hint);
+    public void setFloatingHint(String hint) {
+        this.floatingHint = hint;
         hintTextView.setText(hint);
+    }
+
+    public void setHintNoFloating(String hint) {
+        editText.setHint(hint);
+		this.hint = hint;
+    }
+
+    public void setHint(String hint) {
+        editText.setHint(hint);
+		if (this.hint.equals(floatingHint)) {
+			this.floatingHint = hint;
+			hintTextView.setText(hint);
+		}
+        this.hint = hint;
     }
 
     public String getHint() {

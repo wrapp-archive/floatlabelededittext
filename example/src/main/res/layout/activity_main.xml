@@ -13,7 +13,8 @@
     <com.wrapp.floatlabelededittext.FloatLabeledEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        float:fletFloatingHint="This is the hint"/>
+        float:fletHint="This is the hint"
+        float:fletFloatingHint="And this the floating hint"/>
 
     <com.wrapp.floatlabelededittext.FloatLabeledEditText
         android:layout_width="match_parent"
