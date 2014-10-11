@@ -222,6 +222,19 @@ public class FloatLabeledEditText extends LinearLayout {
     }
 
     /**
+     * Sets the text on the EditText; if withHint is true, shows the hint if it's supposed to.
+     *
+     * @param text
+     * @param withHint
+     */
+    public void setText(CharSequence text, boolean withHint) {
+        setText(text);
+
+        if (withHint)
+            setShowHint(text.length() != 0);
+    }
+
+    /**
      * Convenience for {@link #setText} to get the {@link java.lang.String}
      * of what is in the EditText.
      */
