@@ -13,8 +13,4 @@ allprojects {
   repositories {
     mavenCentral()
   }
-
-  tasks.withType(Compile) {
-    options.encoding = "UTF-8"
-  }
 }
