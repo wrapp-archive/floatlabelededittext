@@ -14,7 +14,7 @@ http://dribbble.com/shots/1254439--GIF-Mobile-Form-Interaction?list=users
 Notice
 ==============
 
-The usage has significantly changed in version 0.0.5 inspired by [chrisbanes](https://github.com/chrisbanes) [implementation](https://gist.github.com/chrisbanes/11247418) which makes styling easier.
+The usage has significantly changed in version 0.0.5 inspired by [chrisbanes](https://github.com/chrisbanes) [implementation](https://gist.github.com/chrisbanes/11247418) which makes styling easier. If you want to use the old style, use version 0.0.4.
 
 
 Usage
