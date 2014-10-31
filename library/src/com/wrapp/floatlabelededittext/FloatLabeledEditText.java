@@ -124,6 +124,10 @@ public class FloatLabeledEditText extends FrameLayout {
         });
 
         mHintTextView.setText(mEditText.getHint());
+
+        if(!TextUtils.isEmpty(mEditText.getText())){
+            mHintTextView.setVisibility(VISIBLE);
+        }
     }
 
     private void onFocusChanged(boolean gotFocus) {
@@ -166,6 +170,7 @@ public class FloatLabeledEditText extends FrameLayout {
                 public void onAnimationEnd(Animator animation) {
                     super.onAnimationEnd(animation);
                     mHintTextView.setVisibility(show ? VISIBLE : INVISIBLE);
+                    AnimatorProxy.wrap(mHintTextView).setAlpha(show ? 1 : 0);
                 }
             });
             animation.start();
