@@ -5,4 +5,8 @@
         <!-- Customize your theme here. -->
     </style>
 
+
+    <style name="floatlabelededittext">
+        <item name="android:textColor">#FF0000</item>
+    </style>
 </resources>

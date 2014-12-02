@@ -46,6 +46,7 @@ and then insert the view in XML:
             android:hint="This is the hint" />
     </com.wrapp.floatlabelededittext.FloatLabeledEditText>
 
+    <!-- add some padding -->
     <com.wrapp.floatlabelededittext.FloatLabeledEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -57,6 +58,7 @@ and then insert the view in XML:
             android:hint="Username" />
     </com.wrapp.floatlabelededittext.FloatLabeledEditText>
 
+    <!-- password input -->
     <com.wrapp.floatlabelededittext.FloatLabeledEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -66,6 +68,20 @@ and then insert the view in XML:
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
+            android:inputType="textPassword" />
+    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+    <!-- change color of hint text-->
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        float:fletPaddingBottom="10dp"
+        float:fletTextAppearance="@style/floatlabelededittext">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Styled Hint"
             android:inputType="textPassword" />
     </com.wrapp.floatlabelededittext.FloatLabeledEditText>
 ```
