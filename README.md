@@ -101,6 +101,7 @@ Additional Credit
 * Chris Banes [chrisbanes](https://github.com/chrisbanes)
 * Quentin DOMMERC [dommerq](https://github.com/dommerq)
 * Aaron Rietschlin [@AaronRietschlin](https://twitter.com/AaronRietschlin)
+* Guillaume Imbert [HozakaN](https://github.com/HozakaN)
 
 
 
