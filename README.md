@@ -22,14 +22,14 @@ Usage
 
 Add the library project or grab to build.gradle:
 ```groovy
-compile 'com.wrapp.floatlabelededittext:library:0.0.5'
+compile 'com.wrapp.floatlabelededittext:library:0.0.6'
 ```
 or plain maven:
 ```maven
 <dependency>
   <groupId>com.wrapp.floatlabelededittext</groupId>
   <artifactId>library</artifactId>
-  <version>0.0.5</version>
+  <version>0.0.6</version>
   <type>aar</type>
 </dependency>
 ```

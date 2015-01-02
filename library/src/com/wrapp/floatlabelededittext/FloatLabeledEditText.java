@@ -1,5 +1,6 @@
 package com.wrapp.floatlabelededittext;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -70,11 +71,7 @@ public class FloatLabeledEditText extends FrameLayout {
         }
 
         if (background != null) {
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                mHintTextView.setBackground(background);
-            } else {
-                mHintTextView.setBackgroundDrawable(background);
-            }
+            setHintBackground(background);
         }
 
         mHintTextView.setTextAppearance(mContext, a.getResourceId(R.styleable.FloatLabeledEditText_fletTextAppearance, android.R.style.TextAppearance_Small));
@@ -86,6 +83,15 @@ public class FloatLabeledEditText extends FrameLayout {
         addView(mHintTextView, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 
         a.recycle();
+    }
+
+    @SuppressLint("NewApi")
+    private void setHintBackground(Drawable background) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            mHintTextView.setBackground(background);
+        } else {
+            mHintTextView.setBackgroundDrawable(background);
+        }
     }
 
     @Override
