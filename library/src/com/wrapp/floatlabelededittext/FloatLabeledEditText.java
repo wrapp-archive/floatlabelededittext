@@ -3,6 +3,7 @@ package com.wrapp.floatlabelededittext;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -60,11 +61,20 @@ public class FloatLabeledEditText extends FrameLayout {
         final int paddingTop = a.getDimensionPixelSize(R.styleable.FloatLabeledEditText_fletPaddingTop, 0);
         final int paddingRight = a.getDimensionPixelSize(R.styleable.FloatLabeledEditText_fletPaddingRight, 0);
         final int paddingBottom = a.getDimensionPixelSize(R.styleable.FloatLabeledEditText_fletPaddingBottom, 0);
+        Drawable background = a.getDrawable(R.styleable.FloatLabeledEditText_fletBackground);
 
         if (padding != 0) {
             mHintTextView.setPadding(padding, padding, padding, padding);
         } else {
             mHintTextView.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
+        }
+
+        if (background != null) {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
+                mHintTextView.setBackground(background);
+            } else {
+                mHintTextView.setBackgroundDrawable(background);
+            }
         }
 
         mHintTextView.setTextAppearance(mContext, a.getResourceId(R.styleable.FloatLabeledEditText_fletTextAppearance, android.R.style.TextAppearance_Small));
