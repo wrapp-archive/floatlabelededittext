@@ -5,8 +5,9 @@ dependencies {
 }
 
 android {
-  compileSdkVersion 19
-  buildToolsVersion '19.1.0'
+  compileSdkVersion rootProject.ext.compileSdkVersion
+  buildToolsVersion rootProject.ext.buildToolsVersion
+
 
   defaultConfig {
     versionCode 6
