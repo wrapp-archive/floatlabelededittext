@@ -119,7 +119,6 @@ public class FloatLabeledEditText extends FrameLayout {
 
             @Override
             public void afterTextChanged(Editable s) {
-                setShowHint(!TextUtils.isEmpty(s));
             }
 
             @Override
@@ -128,6 +127,15 @@ public class FloatLabeledEditText extends FrameLayout {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.length() == 0) {
+                    if (before == 1) {
+                        setShowHint(false);
+                    } else if (before > 1) {
+                        setShowHint(true);
+                    }
+                } else {
+                    setShowHint(!TextUtils.isEmpty(s));
+                }
             }
 
         });
