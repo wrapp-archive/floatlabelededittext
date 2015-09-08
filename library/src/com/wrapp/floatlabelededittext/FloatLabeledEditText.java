@@ -31,6 +31,9 @@ public class FloatLabeledEditText extends FrameLayout {
     private TextView mHintTextView;
     private EditText mEditText;
 
+    private boolean singleLine;
+    private String singleLineSeparator;
+    
     private Context mContext;
 
         public FloatLabeledEditText(Context context) {
@@ -62,7 +65,13 @@ public class FloatLabeledEditText extends FrameLayout {
         final int paddingTop = a.getDimensionPixelSize(R.styleable.FloatLabeledEditText_fletPaddingTop, 0);
         final int paddingRight = a.getDimensionPixelSize(R.styleable.FloatLabeledEditText_fletPaddingRight, 0);
         final int paddingBottom = a.getDimensionPixelSize(R.styleable.FloatLabeledEditText_fletPaddingBottom, 0);
+        singleLine = a.getBoolean(R.styleable.FloatLabeledEditText_fletSingleLine, false);
+        singleLineSeparator = a.getString(R.styleable.FloatLabeledEditText_fletSingleLineSeparator);
         Drawable background = a.getDrawable(R.styleable.FloatLabeledEditText_fletBackground);
+        
+        if (singleLine) {
+                mHintTextView.setSingleLine(true);
+        }
 
         if (padding != 0) {
             mHintTextView.setPadding(padding, padding, padding, padding);
@@ -199,6 +208,9 @@ public class FloatLabeledEditText extends FrameLayout {
 
     public void setHint(String hint) {
         mEditText.setHint(hint);
+	   if (singleLine && singleLineSeparator != null) {
+	       hint = hint.replace("\n", singleLineSeparator);
+	   }
         mHintTextView.setText(hint);
     }
 

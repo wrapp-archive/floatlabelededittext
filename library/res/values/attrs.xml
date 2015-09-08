@@ -9,6 +9,9 @@
         <attr name="fletPaddingRight" format="reference|dimension" />
         <attr name="fletPaddingBottom" format="reference|dimension" />
         <attr name="fletBackground" format="reference|color" />
+	   <attr name="fletSingleLine" format="reference|boolean" />
++       <!-- you probably have to try html format -->
++       <attr name="fletSingleLineSeparator" format="reference|string" />
     </declare-styleable>
 
 </resources>
