@@ -75,7 +75,7 @@ public class FloatLabeledEditText extends FrameLayout {
         }
 
         mHintTextView.setTextAppearance(mContext, a.getResourceId(R.styleable.FloatLabeledEditText_fletTextAppearance, android.R.style.TextAppearance_Small));
-
+        mHintTextView.setTextColor(Color.WHITE);
         //Start hidden
         mHintTextView.setVisibility(INVISIBLE);
         AnimatorProxy.wrap(mHintTextView).setAlpha(0);
