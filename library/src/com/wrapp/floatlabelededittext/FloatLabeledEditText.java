@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.graphics.Color;
 
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorListenerAdapter;
@@ -75,7 +76,7 @@ public class FloatLabeledEditText extends FrameLayout {
         }
 
         mHintTextView.setTextAppearance(mContext, a.getResourceId(R.styleable.FloatLabeledEditText_fletTextAppearance, android.R.style.TextAppearance_Small));
-        mHintTextView.setTextColor(Color.WHITE);
+        mHintTextView.setTextColor(Color.parseColor("#FFFFFF"));
         //Start hidden
         mHintTextView.setVisibility(INVISIBLE);
         AnimatorProxy.wrap(mHintTextView).setAlpha(0);
